@@ -88,7 +88,7 @@ coreo_uni_util_notify "advise-redshift" do
   "number_of_violations":"STACK::coreo_aws_advisor_redshift.advise-redshift.number_violations",
   "number_violations_ignored":"STACK::coreo_aws_advisor_redshift.advise-redshift.number_ignored_violations",
   "violations": STACK::coreo_aws_advisor_redshift.advise-redshift.report }'
-  payload_type "${AUDIT_AWS_REDSHIFT_PAYLOAD_TYPE}"
+  payload_type "json"
   endpoint ({
       :to => '${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on INSTANCE::stack_name :: INSTANCE::name'
   })
