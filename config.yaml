@@ -19,11 +19,6 @@ variables:
     required: true
     type: string
     default: false
-  AUDIT_AWS_REDSHIFT_PAYLOAD_TYPE:
-    description: json or text
-    required: true
-    type: string
-    default: "json"
   AUDIT_AWS_REDSHIFT_SEND_ON:
     description: always or change
     required: true
