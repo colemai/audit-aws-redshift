@@ -3,6 +3,7 @@ coreo_aws_advisor_alert "redshift-publicly-accessible" do
   action :define
   service :redshift
   link "http://kb.cloudcoreo.com/mydoc_redshift-publicly-accessible.html"
+  display_name "Redshift cluster is Publicly Accessible"
   description "The affected Redshift cluster is publicly accessible to the world."
   category "Security"
   suggested_action "Consider whether the affected Redshift cluster should be publicly accessible to the world. If not, modify the option which enables your Redshift cluster to become publicly accessible."
@@ -17,6 +18,7 @@ coreo_aws_advisor_alert "redshift-encrypted" do
   action :define
   service :redshift
   link "http://kb.cloudcoreo.com/mydoc_redshift-encrypted.html"
+  display_name "Redshift cluster data is not encrypted"
   description "Redshift cluster data in the affected cluster is not encrypted at rest."
   category "Security"
   suggested_action "To encrypt the data in all your user-created tables, you can enable cluster encryption when you launch the cluster."
@@ -31,7 +33,8 @@ coreo_aws_advisor_alert "redshift-no-version-upgrade" do
   action :define
   service :redshift
   link "http://kb.cloudcoreo.com/mydoc_redshift-no-version-upgrade.html"
-  description "Redshift automatic major version upgrades is not enabled."
+  display_name "Redshift automatic major version upgrades not enabled"
+  description "Redshift automatic major version upgrades not enabled."
   category "Reliability"
   suggested_action "Enable major version upgrades by setting Allow Version Upgrade to true. This will allow major version upgrades to be applied automatically to the cluster during the maintenance window."
   level "Warning"
@@ -45,6 +48,7 @@ coreo_aws_advisor_alert "redshift-no-require-ssl" do
   action :define
   service :redshift
   link "http://kb.cloudcoreo.com/mydoc_redshift-no-require-ssl.html"
+  display_name "Connections to Redshift not required to use SSL encryption"
   description "Connections to Redshift aren't set to require the use of SSL encryption."
   category "Security"
   suggested_action "Enable Redshift to require the use of SSL encrypted connections."
@@ -60,6 +64,7 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
   action :define
   service :redshift
   link "http://kb.cloudcoreo.com/mydoc_redshift-no-user-logging.html"
+  display_name "Redshift user activity logging is disabled"
   description "Redshift user activity logging is disabled."
   category "Audit"
   suggested_action "Enable Redshift user activity logging."
