@@ -47,6 +47,10 @@ This repo is designed to work with CloudCoreo. It will monitor Redshift against 
 1. Alert
 1. Redshift
 
+## Categories
+
+1. Audit
+
 ## Diagram
 
 
