@@ -55,6 +55,7 @@ coreo_aws_advisor_alert "redshift-no-require-ssl" do
   level "Critical"
   objectives     ["cluster_parameter_groups", "cluster_parameters", "cluster_parameters"]
   call_modifiers [{}, {:parameter_group_name => "parameter_groups.parameter_group_name"}, {:parameter_group_name => "parameter_groups.parameter_group_name"}]
+  id_map "modifiers.parameter_group_name"
   audit_objects  ["", "parameters.parameter_name", "parameters.parameter_value"]
   operators      ["", "==", "=="]
   alert_when     ["", "require_ssl", false]
@@ -71,6 +72,7 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
   level "Warning"
   objectives ["cluster_parameter_groups", "cluster_parameters", "cluster_parameters"]
   call_modifiers [{}, {:parameter_group_name => "parameter_groups.parameter_group_name"}, {:parameter_group_name => "parameter_groups.parameter_group_name"}]
+  id_map "modifiers.parameter_group_name"
   audit_objects ["", "parameters.parameter_name", "parameters.parameter_value"]
   operators ["", "==", "=="]
   alert_when ["", "enable_user_activity_logging", false]
