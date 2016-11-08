@@ -89,15 +89,15 @@ coreo_uni_util_notify "advise-redshift" do
   type 'email'
   allow_empty ${AUDIT_AWS_REDSHIFT_ALLOW_EMPTY}
   send_on "${AUDIT_AWS_REDSHIFT_SEND_ON}"
-  payload '{"stack name":"INSTANCE::stack_name",
-  "instance name":"INSTANCE::name",
-  "number_of_checks":"STACK::coreo_aws_advisor_redshift.advise-redshift.number_checks",
-  "number_of_violations":"STACK::coreo_aws_advisor_redshift.advise-redshift.number_violations",
-  "number_violations_ignored":"STACK::coreo_aws_advisor_redshift.advise-redshift.number_ignored_violations",
-  "violations": STACK::coreo_aws_advisor_redshift.advise-redshift.report }'
+  payload '{"stack name":"PLAN::stack_name",
+  "instance name":"PLAN::name",
+  "number_of_checks":"COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.number_checks",
+  "number_of_violations":"COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.number_violations",
+  "number_violations_ignored":"COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.number_ignored_violations",
+  "violations": COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.report }'
   payload_type "json"
   endpoint ({
-      :to => '${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on INSTANCE::stack_name :: INSTANCE::name'
+      :to => '${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
   })
 end
 
