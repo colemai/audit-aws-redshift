@@ -15,25 +15,25 @@ This repo is designed to work with CloudCoreo. It will monitor Redshift against 
 ## Required variables with no default
 
 ### `AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT`:
-  * description: email recipient for notification
+  * description: Enter the email address(es) that will receive notifications. If more than one, separate each with a comma.
 
 
 ## Required variables with default
 
 ### `AUDIT_AWS_REDSHIFT_ALERT_LIST`:
-  * description: alert list for generating notifications
+  * description: Which alerts would you like to check for? (Default is all Redshift alerts)
   * default: redshift-publicly-accessible, redshift-encrypted, redshift-no-version-upgrade, redshift-no-require-ssl, redshift-no-user-logging
 
 ### `AUDIT_AWS_REDSHIFT_ALLOW_EMPTY`:
-  * description: receive empty reports?
+  * description: Would you like to receive empty reports? Options - true / false. Default is false.
   * default: false
 
 ### `AUDIT_AWS_REDSHIFT_SEND_ON`:
-  * description: always or change
+  * description: Send reports always or only when there is a change? Options - always / change. Default is change.
   * default: change
 
 ### `AUDIT_AWS_REDSHIFT_REGIONS`:
-  * description: list of AWS regions to check. Default is all regions
+  * description: List of AWS regions to check. Default is us-east-1,us-west-1,us-west-2.
   * default: us-east-1, us-west-1, us-west-2
 
 
