@@ -19,11 +19,6 @@ variables:
     required: true
     type: string
     default: false
-  AUDIT_AWS_REDSHIFT_SEND_ON:
-    description: "Send reports always or only when there is a change? Options - always / change. Default is change."
-    required: true
-    type: string
-    default: "change"
   AUDIT_AWS_REDSHIFT_REGIONS:
     description: "List of AWS regions to check. Default is us-east-1,us-west-1,us-west-2."
     required: true
