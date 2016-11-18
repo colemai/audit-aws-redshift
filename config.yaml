@@ -1,4 +1,6 @@
 variables:
+Foo:
+	bar: baz
   AUDIT_AWS_REDSHIFT_ALERT_LIST:
     description: "Which alerts would you like to check for? (Default is all Redshift alerts)"
     required: true
@@ -14,11 +16,11 @@ variables:
     required: true
     type: string
     default:
-#  AUDIT_AWS_REDSHIFT_ALLOW_EMPTY:
-#    description: "Would you like to receive empty reports? Options - true / false. Default is false."
-#    required: true
-#    type: string
-#    default: false
+  AUDIT_AWS_REDSHIFT_ALLOW_EMPTY:
+    description: "Would you like to receive empty reports? Options - true / false. Default is false."
+    required: true
+    type: string
+    default: false
   AUDIT_AWS_REDSHIFT_REGIONS:
     description: "List of AWS regions to check. Default is us-east-1,us-west-1,us-west-2."
     required: true
