@@ -81,7 +81,7 @@ end
 coreo_aws_advisor_alert "redshift-snapshot-retention" do
   action :define
   service :redshift
-  link "http://kb.cloudcoreo.com/"
+  #link "http://kb.cloudcoreo.com/"
   display_name "Redshift short snapshot retention period"
   description "The affected Redshift cluster has a short snapshot retention period."
   category "Dataloss"
