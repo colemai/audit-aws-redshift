@@ -112,7 +112,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.0.5"
+                   :version => "1.0.9"
                }       ])
   json_input '{ "composite name":"PLAN::stack_name",
                 "plan name":"PLAN::name",
@@ -122,7 +122,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
                 "violations": COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.report}'
   function <<-EOH
 const CloudCoreoJSRunner = require('cloudcoreo-jsrunner-commons');
-const AuditRedshift = new CloudCoreoJSRunner(json_input, false, "${AUDIT_AWS_REDSHIFT_ALERT_NO_OWNER_RECIPIENT}", "${AUDIT_AWS_REDSHIFT_OWNER_TAG}");
+const AuditRedshift = new CloudCoreoJSRunner(json_input, false, "${AUDIT_AWS_REDSHIFT_ALERT_NO_OWNER_RECIPIENT}", "${AUDIT_AWS_REDSHIFT_OWNER_TAG}", 'redshift');
 const notifiers = AuditRedshift.getNotifiers();
 callback(notifiers);
   EOH
