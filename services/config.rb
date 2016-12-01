@@ -109,7 +109,7 @@ coreo_uni_util_notify "advise-redshift-json" do
   action :${AUDIT_AWS_REDSHIFT_FULL_JSON_REPORT}
   type 'email'
   allow_empty ${AUDIT_AWS_REDSHIFT_ALLOW_EMPTY}
-  send_on 'always'
+  send_on ${AUDIT_AWS_REDSHIFT_SEND_ON}
   payload '{"composite name":"PLAN::stack_name",
   "plan name":"PLAN::name",
   "number_of_checks":"COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.number_checks",
