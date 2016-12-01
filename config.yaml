@@ -12,7 +12,7 @@ variables:
       - redshift-snapshot-retention
   AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT:
     description: "Enter the email address(es) that will receive notifications. If more than one, separate each with a comma."
-    required: true
+    required: false
     type: string
     default:
   AUDIT_AWS_REDSHIFT_ALLOW_EMPTY:
@@ -44,13 +44,13 @@ variables:
       description: "Would you like to send a Summary ELB report? Options - notify / nothing. Default is no / nothing."
       required: true
       type: string
-      default: "notify"
+      default: "nothing"
   AUDIT_AWS_REDSHIFT_OWNERS_HTML_REPORT:
       description: notify or nothing
       required: true
       type: string
       default: "notify"
-  AUDIT_AWS_REDSHIFT_ALERT_NO_OWNER_RECIPIENT:
+  AUDIT_AWS_REDSHIFT_RECIPIENT_2:
       description: "Enter the email address(es) that will receive notifications for objects with no owner tag (Optional, only if owner tag is enabled)."
       required: true
       type: string
