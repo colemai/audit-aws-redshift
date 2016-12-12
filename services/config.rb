@@ -78,6 +78,22 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
   alert_when ["", "enable_user_activity_logging", false]
 end
 
+coreo_aws_advisor_alert "redshift-snapshot-retention" do
+  action :define
+  service :redshift
+  #link "http://kb.cloudcoreo.com/"
+  display_name "Redshift short snapshot retention period"
+  description "The affected Redshift cluster has a short snapshot retention period."
+  category "Dataloss"
+  suggested_action "Increase the snapshot retention period for the affected Redshift cluster."
+  level "Critical"
+  objectives ["clusters"]
+  id_map "object.clusters.cluster_identifier"
+  audit_objects ["object.clusters.automated_snapshot_retention_period"]
+  operators ["<="]
+  alert_when [10]
+end
+
 coreo_aws_advisor_redshift "advise-redshift" do
   alerts ${AUDIT_AWS_REDSHIFT_ALERT_LIST}
   action :advise
@@ -93,7 +109,7 @@ coreo_uni_util_notify "advise-redshift-json" do
   action :${AUDIT_AWS_REDSHIFT_FULL_JSON_REPORT}
   type 'email'
   allow_empty ${AUDIT_AWS_REDSHIFT_ALLOW_EMPTY}
-  send_on 'always'
+  send_on '${AUDIT_AWS_REDSHIFT_SEND_ON}'
   payload '{"composite name":"PLAN::stack_name",
   "plan name":"PLAN::name",
   "number_of_checks":"COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.number_checks",
@@ -122,7 +138,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
                 "violations": COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.report}'
   function <<-EOH
 const CloudCoreoJSRunner = require('cloudcoreo-jsrunner-commons');
-const AuditRedshift = new CloudCoreoJSRunner(json_input, false, "${AUDIT_AWS_REDSHIFT_ALERT_NO_OWNER_RECIPIENT}", "${AUDIT_AWS_REDSHIFT_OWNER_TAG}", 'redshift');
+const AuditRedshift = new CloudCoreoJSRunner(json_input, false, "${AUDIT_AWS_REDSHIFT_RECIPIENT_2}", "${AUDIT_AWS_REDSHIFT_OWNER_TAG}", 'redshift');
 const notifiers = AuditRedshift.getNotifiers();
 callback(notifiers);
   EOH
@@ -154,7 +170,7 @@ coreo_uni_util_notify "advise-redshift-rollup" do
   action :${AUDIT_AWS_REDSHIFT_ROLLUP_REPORT}
   type 'email'
   allow_empty true
-  send_on 'always'
+  send_on '${AUDIT_AWS_REDSHIFT_SEND_ON}'
   payload '
 composite name: PLAN::stack_name
 plan name: PLAN::name
@@ -167,7 +183,7 @@ COMPOSITE::coreo_uni_util_jsrunner.tags-rollup-redshift.return
   '
   payload_type 'text'
   endpoint ({
-      :to => '${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
+      :to => '${AUDIT_AWS_REDSHIFT_RECIPIENT_2}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
   })
 end
 =begin
