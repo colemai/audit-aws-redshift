@@ -139,7 +139,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
   function <<-EOH
   
 const JSON = json_input;
-const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT_2}";
+const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_RECIPIENT_2}";
 const OWNER_TAG = "${AUDIT_AWS_REDSHIFT_OWNER_TAG}";
 const AUDIT_NAME = 'redshift';
 const IS_KILL_SCRIPTS_SHOW = false;
