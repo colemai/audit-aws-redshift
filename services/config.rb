@@ -137,9 +137,27 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
                 "number_violations_ignored":"COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.number_ignored_violations",
                 "violations": COMPOSITE::coreo_aws_advisor_redshift.advise-redshift.report}'
   function <<-EOH
+  
+const JSON = json_input;
+const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT_2}";
+const OWNER_TAG = "${AUDIT_AWS_REDSHIFT_OWNER_TAG}";
+const AUDIT_NAME = 'redshift';
+const IS_KILL_SCRIPTS_SHOW = false;
+const EC2_LOGIC = ''; // you can choose 'and' or 'or';
+const EXPECTED_TAGS = [];
+
+const VARIABLES = {
+    'NO_OWNER_EMAIL': NO_OWNER_EMAIL,
+    'OWNER_TAG': OWNER_TAG,
+    'AUDIT_NAME': AUDIT_NAME,
+    'IS_KILL_SCRIPTS_SHOW': IS_KILL_SCRIPTS_SHOW,
+    'EC2_LOGIC': EC2_LOGIC,
+    'EXPECTED_TAGS': EXPECTED_TAGS
+};
+
 const CloudCoreoJSRunner = require('cloudcoreo-jsrunner-commons');
-const AuditRedshift = new CloudCoreoJSRunner(json_input, false, "${AUDIT_AWS_REDSHIFT_RECIPIENT_2}", "${AUDIT_AWS_REDSHIFT_OWNER_TAG}", 'redshift');
-const notifiers = AuditRedshift.getNotifiers();
+const AuditRedShift = new CloudCoreoJSRunner(JSON, VARIABLES);
+const notifiers = AuditRedShift.getNotifiers();
 callback(notifiers);
   EOH
 end
