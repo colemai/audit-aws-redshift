@@ -139,7 +139,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
   function <<-EOH
   
 const JSON = json_input;
-const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_RECIPIENT}";
+const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT}";
 const OWNER_TAG = "${AUDIT_AWS_REDSHIFT_OWNER_TAG}";
 const AUDIT_NAME = 'redshift';
 const IS_KILL_SCRIPTS_SHOW = false;
@@ -201,7 +201,7 @@ COMPOSITE::coreo_uni_util_jsrunner.tags-rollup-redshift.return
   '
   payload_type 'text'
   endpoint ({
-      :to => '${AUDIT_AWS_REDSHIFT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
+      :to => '${AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
   })
 end
 =begin
