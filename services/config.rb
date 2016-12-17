@@ -106,7 +106,7 @@ end
   HTML SEND METHOD
 =end
 coreo_uni_util_notify "advise-redshift-json" do
-  action :${AUDIT_AWS_REDSHIFT_FULL_JSON_REPORT}
+  action :nothing
   type 'email'
   allow_empty ${AUDIT_AWS_REDSHIFT_ALLOW_EMPTY}
   send_on '${AUDIT_AWS_REDSHIFT_SEND_ON}'
@@ -139,7 +139,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
   function <<-EOH
   
 const JSON = json_input;
-const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_RECIPIENT_2}";
+const NO_OWNER_EMAIL = "${AUDIT_AWS_REDSHIFT_RECIPIENT}";
 const OWNER_TAG = "${AUDIT_AWS_REDSHIFT_OWNER_TAG}";
 const AUDIT_NAME = 'redshift';
 const IS_KILL_SCRIPTS_SHOW = false;
@@ -180,14 +180,14 @@ callback(rollup_string);
 end
 
 coreo_uni_util_notify "advise-redshift-to-tag-values" do
-  action :${AUDIT_AWS_REDSHIFT_OWNERS_HTML_REPORT}
+  action :${AUDIT_AWS_REDSHIFT_HTML_REPORT}
   notifiers 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-redshift.return'
 end
 
 coreo_uni_util_notify "advise-redshift-rollup" do
   action :${AUDIT_AWS_REDSHIFT_ROLLUP_REPORT}
   type 'email'
-  allow_empty true
+  allow_empty ${AUDIT_AWS_REDSHIFT_ALLOW_EMPTY}
   send_on '${AUDIT_AWS_REDSHIFT_SEND_ON}'
   payload '
 composite name: PLAN::stack_name
@@ -201,7 +201,7 @@ COMPOSITE::coreo_uni_util_jsrunner.tags-rollup-redshift.return
   '
   payload_type 'text'
   endpoint ({
-      :to => '${AUDIT_AWS_REDSHIFT_RECIPIENT_2}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
+      :to => '${AUDIT_AWS_REDSHIFT_RECIPIENT}', :subject => 'CloudCoreo redshift advisor alerts on PLAN::stack_name :: PLAN::name'
   })
 end
 =begin
