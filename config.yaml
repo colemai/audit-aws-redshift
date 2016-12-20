@@ -11,10 +11,15 @@ variables:
       - redshift-no-user-logging
       - redshift-snapshot-retention
   AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT:
-    description: "Enter the email address(es) that will receive notifications. If more than one, separate each with a comma."
+    description: "Enter the email address(es) that will receive rollup report and json. If more than one, separate each with a comma."
     required: true
     type: string
     default:
+  AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT_2:
+      description: "Enter the email address(es) that will receive notifications. If more than one, separate each with a comma."
+      required: true
+      type: string
+      default:
   AUDIT_AWS_REDSHIFT_ALLOW_EMPTY:
     description: "Would you like to receive empty reports? Options - true / false. Default is false."
     required: true
