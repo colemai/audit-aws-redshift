@@ -128,7 +128,7 @@ coreo_uni_util_jsrunner "tags-to-notifiers-array-redshift" do
   packages([
                {
                    :name => "cloudcoreo-jsrunner-commons",
-                   :version => "1.2.3"
+                   :version => "1.2.6"
                }       ])
   json_input '{ "composite name":"PLAN::stack_name",
                 "plan name":"PLAN::name",
