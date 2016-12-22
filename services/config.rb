@@ -106,7 +106,7 @@ end
   HTML SEND METHOD
 =end
 coreo_uni_util_notify "advise-redshift-json" do
-  action :notify
+  action :nothing
   type 'email'
   allow_empty ${AUDIT_AWS_REDSHIFT_ALLOW_EMPTY}
   send_on '${AUDIT_AWS_REDSHIFT_SEND_ON}'
