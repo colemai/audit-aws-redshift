@@ -92,7 +92,7 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
 #   id_map "modifiers.parameter_group_name"
   audit_objects ["", "logging_enabled"]
   operators ["", "=="]
-  alert_when ["", false]
+  alert_when ["", true]
 end
 
 # coreo_aws_advisor_alert "redshift-no-connection-logging" do
