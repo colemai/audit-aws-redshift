@@ -8,7 +8,9 @@ variables:
       - redshift-encrypted
       - redshift-no-version-upgrade
       - redshift-no-require-ssl
+      - redshift-no-user-activity-logging
       - redshift-no-user-logging
+      - redshift-no-connection-logging
       - redshift-snapshot-retention
   AUDIT_AWS_REDSHIFT_ALERT_RECIPIENT:
     description: "Enter the email address(es) that will receive notifiers. If more than one, separate each with a comma."
