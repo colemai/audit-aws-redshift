@@ -77,7 +77,7 @@ coreo_aws_advisor_alert "redshift-no-user-activity-logging" do
   operators ["", "==", "=="]
   alert_when ["", "enable_user_activity_logging", false]
 end
-
+ 
 coreo_aws_advisor_alert "redshift-no-user-logging" do
   action :define
   service :redshift
