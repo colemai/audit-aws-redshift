@@ -86,11 +86,11 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
   description "Redshift database user logging is disabled."
   category "Audit"
   suggested_action "Enable Redshift database user logging."
-  level "Warning"
+  level "Critical"
   objectives ["clusters", "logging_status"]
   call_modifiers [{}, {:cluster_identifier => "clusters.cluster_identifier"}]
 #   id_map "modifiers.parameter_group_name"
-  audit_objects ["", "logging_enabled"]
+  audit_objects ["", "object.logging_enabled"]
   operators ["", "=="]
   alert_when ["", false]
 end
