@@ -92,7 +92,7 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
   id_map "object.modifiers.parameter_group_name"
   audit_objects ["", "object.logging_enabled"]
   operators ["", "=="]
-  alert_when ["", /.*/]
+  alert_when ["", true]
 end
 
 coreo_aws_advisor_alert "redshift-snapshot-retention" do
