@@ -89,7 +89,7 @@ coreo_aws_advisor_alert "redshift-no-user-logging" do
   level "Critical"
   objectives ["clusters", "logging_status"]
   call_modifiers [{}, {:cluster_identifier => "object.clusters.cluster_identifier"}]
-  id_map "object.clusters.cluster_identifier"
+#   id_map "object.clusters.cluster_identifier"
   audit_objects ["", "object.logging_enabled"]
   operators ["", "=="]
   alert_when ["", false]
